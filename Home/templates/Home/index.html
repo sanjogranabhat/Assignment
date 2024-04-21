@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Vegetables</h1>
+<div class="d-flex flex-row flex-wrap justify-content-start">
+
+    {% for vegetable in vegetables %}
+    <div class="card m-3" style="width: 14rem;">
+        <!-- Vegetable image -->
+        {% if vegetable.image %}
+        <img src="{{ vegetable.image.url }}" class="card-img-top" alt="{{ vegetable.name }}" height="200vh" style="object-fit: contain;">
+        {% else %}
+        <img src="#" alt="{{vegetable.name}}" height="200vh" style="object-fit: contain;">
+        {% endif %}
+        <div class="card-body">
+            <!-- Vegetable name -->
+            <h5 class="card-title">{{ vegetable.name }}</h5>
+            <!-- Vegetable price -->
+            <p class="card-text">Price: {{ vegetable.price }} RS/kg</p>
+            <!-- Vegetable Quantity -->
+            <p class="card-text">Quantity: {{ vegetable.quantity }} kg</p>
+            <!-- Vegetable description -->
+            <p class="card-text">{{ vegetable.description }}</p>
+            <!--  button -->
+            <a href="#" class="btn btn-primary btn-purchase">Purchase</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h1>Fruits</h1>
+<div class="d-flex flex-row flex-wrap justify-content-start">
+
+    {% for fruit in fruits %}
+    <div class="card m-3" style="width: 14rem;">
+        <!-- Fruit image -->
+        {% if fruit.image %}
+        <img src="{{ fruit.image.url }}" class="card-img-top" alt="{{ fruit.name }}" height="200vh" style="object-fit: contain;">
+        {% else %}
+        <img src="#" alt="{{fruit.name}}" height="200vh" style="object-fit: contain;">
+        {% endif %}
+        <div class="card-body">
+            <!-- Fruit name -->
+            <h5 class="card-title">{{ fruit.name }}</h5>
+            <!-- Fruit price -->
+            <p class="card-text">Price: {{ fruit.price }} RS/kg</p>
+            <!-- Fruit Quantity -->
+            <p class="card-text">Quantity: {{ fruit.quantity }} kg</p>
+            <!-- Fruit description -->
+            <p class="card-text">{{ fruit.description }}</p>
+            <!--  button -->
+            <a href="#" class="btn btn-primary btn-purchase">Purchase</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<style>
+    .card {
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-purchase {
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-purchase:hover {
+        background-color: #007bff;
+    }
+</style>
+
+{% endblock %}

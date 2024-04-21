@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<hr>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Vegetables</h2>
+        <a href="{% url 'add_vegetable' %}" class="btn btn-success">Add Item  </a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vegetable in vegetables %}
+            <tr>
+                <td>
+                    {% if vegetable.image %}
+                    <img src="{{ vegetable.image.url }}" alt="{{ vegetable.name }}" height="100">
+                    {% else %}
+                    <img src="#" alt="{{ vegetable.name }}">
+                    {% endif %}
+                </td>
+                <td>{{ vegetable.name }}</td>
+                <td>{{ vegetable.price }} Rs/kg</td>
+                <td>{{ vegetable.quantity }} kg</td>
+                <td>{{ vegetable.description }}</td>
+                <td>
+                    <a href="{% url 'update_vegetable' vegetable.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete_vegetable' vegetable.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Fruits</h2>
+        <a href="{% url 'add_fruit' %}" class="btn btn-success">Add Item  </a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fruit in fruits %}
+            <tr>
+                <td>
+                    {% if fruit.image %}
+                    <img src="{{ fruit.image.url }}" alt="{{ fruit.name }}" height="100">
+                    {% else %}
+                    <img src="#" alt="{{ fruit.name }}">
+                    {% endif %}
+                </td>
+                <td>{{ fruit.name }}</td>
+                <td>{{ fruit.price }} Rs/kg</td>
+                <td>{{ fruit.quantity }} kg</td>
+                <td>{{ fruit.description }}</td>
+                <td>
+                    <a href="{% url 'update_fruit' fruit.id %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete_fruit' fruit.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
